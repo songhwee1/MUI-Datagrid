@@ -1,34 +1,39 @@
 import styled from "@emotion/styled";
 import "./App.css";
 import { DataGridPremium } from "@mui/x-data-grid-premium";
-
-const GridRowsProp = [
-  { id: 1, col1: "Hello", col2: "World" },
-  { id: 2, col1: "DataGridPro", col2: "is Awesome" },
-  { id: 3, col1: "MUI", col2: "is Amazing" },
-  { id: 4, col1: "Hello", col2: "World" },
-  { id: 5, col1: "DataGridPro", col2: "is Awesome" },
-  { id: 6, col1: "MUI", col2: "is Amazing" },
-  { id: 7, col1: "Hello", col2: "World" },
-  { id: 8, col1: "DataGridPro", col2: "is Awesome" },
-  { id: 9, col1: "MUI", col2: "is Amazing" },
-];
-
-const GridColDef = [
-  { field: "col1", headerName: "Column 1", width: 150 },
-  { field: "col2", headerName: "Column 2", width: 150 },
-];
+import { useDemoData } from "@mui/x-data-grid-generator";
 
 const DataGridContainer = styled.div`
+  padding: 20px;
   width: 100%;
-  height: 300px;
+  height: 1200px;
   overflow: scroll;
 `;
 
 const App = () => {
+  const { data } = useDemoData({
+    dataSet: "Employee",
+    rowLength: 100,
+  });
+
   return (
     <DataGridContainer>
-      <DataGridPremium rows={GridRowsProp} columns={GridColDef} />
+      <DataGridPremium
+        unstable_headerFilters
+        slots={{
+          headerFilterMenu: null,
+        }}
+        {...data}
+        initialState={{
+          ...data.initialState,
+          columns: {
+            columnVisibilityModel: {
+              avatar: false,
+              id: false,
+            },
+          },
+        }}
+      />
     </DataGridContainer>
   );
 };
