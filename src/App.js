@@ -8,6 +8,18 @@ const DataGridContainer = styled.div`
   width: 100%;
   height: 1200px;
   overflow: scroll;
+  .css-v4u5dn-MuiInputBase-root-MuiInput-root {
+    border: 1px solid #e2e2e1 !important;
+  }
+  .css-v4u5dn-MuiInputBase-root-MuiInput-root:before {
+    border-bottom: none !important;
+  }
+  .css-v4u5dn-MuiInputBase-root-MuiInput-root:after {
+    border-bottom: none !important;
+  }
+  .css-aqpgxn-MuiFormLabel-root-MuiInputLabel-root {
+    color: #fff !important;
+  }
 `;
 
 const App = () => {
